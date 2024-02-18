@@ -45,7 +45,7 @@ class User:
                 num -= 1
             if user.age not in range(self.age - 10, self + 10):
                 num -= 1
-        if num > 2:
+        if num > 3:
             return True
         return False
 
@@ -76,14 +76,22 @@ user4 = User(
 )
 
 
+name = input("Enter your name")
+gender = input("Enter your gender")
+profession = input("Enter your profession")
+age = int(input("Enter your age"))
+show = input("Enter your favorite show")
+food = input("Enter your favorite food")
+gender_intrest = input("Enter your gender intrest")
+
 user5 = User(
-    "lucy",
-    "female",
-    35,
-    "engineer",
-    "grey's anatomy",
-    ["indian", "asian"],
-    "male",
+    name,
+    gender,
+    age,
+    profession,
+    show,
+    food,
+    gender_intrest,
 )
 
-user1.compare_users(user2)
+user1.compare_users(user5)
