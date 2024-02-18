@@ -32,9 +32,8 @@ class User:
     def compare_users(self, user):
         # https://www.programiz.com/python-programming/methods/built-in/isinstance
         if isinstance(user, User):
-            num = 2
+            num = 4
             if user.gender_intrest != self.gender:
-                print("gender")
                 return False
             # https://stackoverflow.com/questions/2864842/common-elements-comparison-between-2-lists
             common_food = list(set(user.favorite_food).intersection(self.favorite_food))
@@ -46,8 +45,8 @@ class User:
                 num -= 1
             if user.age not in range(self.age - 10, self.age + 10):
                 num -= 1
-        if num > 2:
-            return True
+            if num > 2:
+                return True
         return False
 
 
