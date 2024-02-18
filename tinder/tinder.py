@@ -84,7 +84,7 @@ def get_user():
     [print(values) for values in fields.values()]
     profession = input("Enter your profession ")
     age = int(input("Enter your age "))
-    show = input("Enter your favorite show ")
+    show = input("Enter your favorite show, (For example: pasta omlete)")
     food = input("Enter your favorite food ")
     food = food.split(" ")
     print(food)
