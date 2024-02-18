@@ -59,7 +59,7 @@ def convert(source_type, dest_type, source_val):
     return 0
     
 def get_data():
-    print("Options: \n1. Temperature fahrenheit to celsius. Example: Write F>C for converting F to C\n")
+    print("Options: \n1. Temperature fahrenheit <-> celsius. Example: Write F>C for converting F to C\n")
     print("2. Speed MPH <-> KPH. Example: Write MPH>KPH for converting MPH to KPH\n")
     print("3. Weight kg <-> stone <-> lbs. Example: Write kg>stone for converting kg to stone for example. \n")
 
