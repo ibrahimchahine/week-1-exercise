@@ -25,7 +25,7 @@ class Plant:
             num += 1
         if self.wind == wind:
             num += 1
-        if self.snow_level >= snow_level:
+        if self.snow_level <= snow_level:
             is_dead = True
         return num, is_dead
 
@@ -46,9 +46,11 @@ rank, is_dead = t = shrubs.compare_plants(weather, precipitation, windy, snow_le
 shrubs_data = (rank, is_dead, shrubs.name)
 rank, is_dead = herb.compare_plants(weather, precipitation, windy, snow_level)
 herb_data = (rank, is_dead, herb.name)
+
 arr = [tree_data, shrubs_data, herb_data]
 arr.sort()
-print("The best match is " + arr[len(arr) - 1][2])
+
+print("The best match is " + arr[len(arr) - 1][2] + "\n")
 for plant in arr:
     if plant[1]:
-        print(plant[2] + " will die from snow")
+        print(plant[2] + " will die from snow\n")
