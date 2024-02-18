@@ -1,3 +1,11 @@
+fields = {
+    "Entertainment": ["singer", "musician"],
+    "Med": ["doctor", "nurse"],
+    "Goverment": ["police", "politician", "soldier"],
+    "Tech": ["engineer", "it"],
+}
+
+
 class User:
     def __init__(
         self,
@@ -16,20 +24,34 @@ class User:
         self.favorite_show = favorite_show
         self.favorite_food = favorite_food
         self.gender_intrest = gender_intrest
+        for key, val in fields.items():
+            if profession in val:
+                self.feild = key
+                break
 
     def compare_users(self, user):
         # https://www.programiz.com/python-programming/methods/built-in/isinstance
         if isinstance(user, User):
-            print("true")
+            num = 7
+            if user.gender != self.gender_intrest:
+                num -= 1
+            # https://stackoverflow.com/questions/2864842/common-elements-comparison-between-2-lists
+            common_food = list(set(user.favorite_food).intersection(self.favorite_food))
+            if len(common_food) <= 0:
+                num -= 1
+            if user.favorite_show != self.favorite_show:
+                num -= 1
 
-        return
+            if user.profession != self.profession:
+                num -= 1
+        return True
 
 
 user1 = User(
     "max", "male", 24, "doctor", "the big bang theory", ["pasta", "omlete"], "female"
 )
 user2 = User(
-    "lucy", "female", 35, "engineer", "grey's anatomy", ["pizaa", "falafel"], "male"
+    "lucy", "female", 35, "police", "grey's anatomy", ["pizaa", "falafel"], "male"
 )
 user3 = User(
     "alex",
