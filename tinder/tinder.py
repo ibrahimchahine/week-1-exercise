@@ -32,9 +32,10 @@ class User:
     def compare_users(self, user):
         # https://www.programiz.com/python-programming/methods/built-in/isinstance
         if isinstance(user, User):
-            num = 5
-            if user.gender != self.gender_intrest:
-                num -= 1
+            num = 2
+            if user.gender_intrest != self.gender:
+                print("gender")
+                return False
             # https://stackoverflow.com/questions/2864842/common-elements-comparison-between-2-lists
             common_food = list(set(user.favorite_food).intersection(self.favorite_food))
             if len(common_food) <= 0:
@@ -43,9 +44,9 @@ class User:
                 num -= 1
             if user.feild != self.feild:
                 num -= 1
-            if user.age not in range(self.age - 10, self + 10):
+            if user.age not in range(self.age - 10, self.age + 10):
                 num -= 1
-        if num > 3:
+        if num > 2:
             return True
         return False
 
@@ -76,13 +77,17 @@ user4 = User(
 )
 
 
-name = input("Enter your name")
-gender = input("Enter your gender")
-profession = input("Enter your profession")
-age = int(input("Enter your age"))
-show = input("Enter your favorite show")
-food = input("Enter your favorite food")
-gender_intrest = input("Enter your gender intrest")
+name = input("Enter your name ")
+gender = input("Enter your gender ")
+print("profession list: \n")
+[print(values) for values in fields.values()]
+profession = input("Enter your profession ")
+age = int(input("Enter your age "))
+show = input("Enter your favorite show ")
+food = input("Enter your favorite food ")
+food = food.split(" ")
+print(food)
+gender_intrest = input("Enter your gender intrest ")
 
 user5 = User(
     name,
@@ -94,4 +99,4 @@ user5 = User(
     gender_intrest,
 )
 
-user1.compare_users(user5)
+print(user1.compare_users(user5))
