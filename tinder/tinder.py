@@ -76,26 +76,42 @@ user4 = User(
 )
 
 
-name = input("Enter your name ")
-gender = input("Enter your gender ")
-print("profession list: \n")
-[print(values) for values in fields.values()]
-profession = input("Enter your profession ")
-age = int(input("Enter your age "))
-show = input("Enter your favorite show ")
-food = input("Enter your favorite food ")
-food = food.split(" ")
-print(food)
-gender_intrest = input("Enter your gender intrest ")
+def get_user():
+    name = input("Enter your name ")
+    gender = input("Enter your gender ")
+    print("profession list: \n")
+    [print(values) for values in fields.values()]
+    profession = input("Enter your profession ")
+    age = int(input("Enter your age "))
+    show = input("Enter your favorite show ")
+    food = input("Enter your favorite food ")
+    food = food.split(" ")
+    print(food)
+    gender_intrest = input("Enter your gender intrest ")
 
-user5 = User(
-    name,
-    gender,
-    age,
-    profession,
-    show,
-    food,
-    gender_intrest,
-)
+    user5 = User(
+        name,
+        gender,
+        age,
+        profession,
+        show,
+        food,
+        gender_intrest,
+    )
+    if user1.compare_users(user5):
+        print(f"Your match is {user1}")
+        return
+    elif user2.compare_users(user5):
+        print(f"Your match is {user2}")
+        return
+    elif user3.compare_users(user5):
+        print(f"Your match is {user3}")
+        return
+    elif user4.compare_users(user5):
+        print(f"Your match is {user4}")
+        return
+    else:
+        get_user()
 
-print(user1.compare_users(user5))
+
+get_user()
