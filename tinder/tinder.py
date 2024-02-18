@@ -77,6 +77,7 @@ user4 = User(
 
 
 def get_user():
+    print("Enter your details:\n")
     name = input("Enter your name ")
     gender = input("Enter your gender ")
     print("profession list: \n")
@@ -99,18 +100,19 @@ def get_user():
         gender_intrest,
     )
     if user1.compare_users(user5):
-        print(f"Your match is {user1}")
+        print(f"Your match is {user1.name}")
         return
     elif user2.compare_users(user5):
-        print(f"Your match is {user2}")
+        print(f"Your match is {user2.name}")
         return
     elif user3.compare_users(user5):
-        print(f"Your match is {user3}")
+        print(f"Your match is {user3.name}")
         return
     elif user4.compare_users(user5):
-        print(f"Your match is {user4}")
+        print(f"Your match is {user4.name}")
         return
     else:
+        print("We didn't find a match for you, try again\n")
         get_user()
 
 
