@@ -32,7 +32,7 @@ class User:
     def compare_users(self, user):
         # https://www.programiz.com/python-programming/methods/built-in/isinstance
         if isinstance(user, User):
-            num = 7
+            num = 5
             if user.gender != self.gender_intrest:
                 num -= 1
             # https://stackoverflow.com/questions/2864842/common-elements-comparison-between-2-lists
@@ -41,10 +41,13 @@ class User:
                 num -= 1
             if user.favorite_show != self.favorite_show:
                 num -= 1
-
-            if user.profession != self.profession:
+            if user.feild != self.feild:
                 num -= 1
-        return True
+            if user.age not in range(self.age - 10, self + 10):
+                num -= 1
+        if num > 2:
+            return True
+        return False
 
 
 user1 = User(
@@ -63,6 +66,17 @@ user3 = User(
     "female",
 )
 user4 = User(
+    "lucy",
+    "female",
+    35,
+    "engineer",
+    "grey's anatomy",
+    ["indian", "asian"],
+    "male",
+)
+
+
+user5 = User(
     "lucy",
     "female",
     35,
