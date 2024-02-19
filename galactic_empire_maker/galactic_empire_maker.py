@@ -53,7 +53,26 @@ humen_material = [
     "R",
     "S",
 ]
-humen_delegation = Delegation("Humen", humen_material, humen_material)
-klingon_delegation = Delegation("Klingon", ["A", "B", "R"], ["A", "B", "R"])
 
-print(humen_delegation.negotiation(klingon_delegation))
+
+def delegation():
+    humen_delegation = Delegation("Humen", humen_material, humen_material)
+    klingon_delegation = Delegation("Klingon", ["A", "B", "R"], ["A", "B", "R"])
+    vulcan_delegation = Delegation("Vulcan", ["F", "C", "K"], ["F", "C", "K"])
+    brog_delegation = Delegation("Borg", ["Z", "D", "W"], ["Z", "D", "W"])
+    vedala_delegation = Delegation("Vedala", ["C", "L", "X"], ["C", "L", "X"])
+    delegations = [
+        klingon_delegation,
+        vedala_delegation,
+        vulcan_delegation,
+        brog_delegation,
+    ]
+    peace = []
+    positive = 0
+    for aliens in delegations:
+        if humen_delegation.negotiation(aliens):
+            peace.append(aliens.name)
+    return peace
+
+
+print(delegation())
