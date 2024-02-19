@@ -5,13 +5,13 @@ def sieve_of_eratosthenes(number_list):
     i = 0
     while i < length:
         num = array[i]
-        for prime in prime_numbers:
+        for j, prime in enumerate(prime_numbers):
             if num % prime == 0:
                 i += 1
                 break
-            prime_numbers.append(num)
-            array.pop(i)
-            break
+            if j == len(prime_numbers) - 1:
+                prime_numbers.append(num)
+                array.pop(i)
         length = len(array)
     return prime_numbers
 
