@@ -1,3 +1,6 @@
+import random
+
+
 class Pokemon:
     def __init__(self, name, level, strength, speed, type):
         self.name = name
@@ -15,3 +18,6 @@ class Player:
     def __init__(self, name, pokemons):
         self.name = name
         self.pokemons = pokemons
+
+    def pick_pokemon():
+        random_pokemon = random.randint(1, 5)
