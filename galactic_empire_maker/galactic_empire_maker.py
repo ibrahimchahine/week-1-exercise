@@ -66,11 +66,13 @@ def delegation():
     vulcan_delegation = Delegation("Vulcan", ["F", "C", "K"], ["F", "C", "K"])
     brog_delegation = Delegation("Borg", ["Z", "D", "W"], ["Z", "D", "W"])
     vedala_delegation = Delegation("Vedala", ["C", "L", "X"], ["C", "L", "X"])
+    xidelphiad_delegation = Delegation("Xidelphiad", ["G", "H", "S"], ["G", "H", "S"])
     delegations = [
         klingon_delegation,
         vedala_delegation,
         vulcan_delegation,
         brog_delegation,
+        xidelphiad_delegation,
     ]
     peace = []
     success_counter = 0
@@ -79,7 +81,7 @@ def delegation():
         if result:
             success_counter += 1
         peace.append(aliens.get_degotiations_details(humen_delegation))
-    if success_counter >= 0.7 * len(delegations):
+    if success_counter >= 0.50 * len(delegations):
         humen_delegation.update_peace(True)
 
     return peace, humen_delegation.peace_achieved
