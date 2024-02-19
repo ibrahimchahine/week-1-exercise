@@ -13,7 +13,7 @@ def boxing_round(fighter1, fighter2):
     user_move_index = int(
         input("\nChose a boxing move: 1. Jab 2. Cross 3. Hook 4. Uppercut ")
     )
-    if user_move_index not in range(1, 4):
+    if user_move_index not in range(1, 5):
         print("Please chose a number between 1-4")
         boxing_round(fighter1, fighter2)
 
@@ -30,8 +30,7 @@ def boxing_round(fighter1, fighter2):
             return fighter2
     else:
         print("\nRound still not done\n")
-        boxing_round(fighter1, fighter2)
-    return
+        return boxing_round(fighter1, fighter2)
 
 
 def boxing_fight(fighter1, fighter2, rounds, fight_details):
@@ -39,8 +38,14 @@ def boxing_fight(fighter1, fighter2, rounds, fight_details):
     fighter2_won_rounds = 0
     print("Fight: " + fight_details)
     for i in range(rounds):
-        boxing_round(fighter1, fighter2)
-    return
+        round_winner = boxing_round(fighter1, fighter2)
+        if round_winner == fighter1:
+            fighter1_won_rounds += 1
+        elif round_winner == fighter2:
+            fighter2_won_rounds += 1
+    if fighter1_won_rounds > fighter2_won_rounds:
+        return fighter1
+    return fighter2
 
 
 def organize_fight():
@@ -52,23 +57,23 @@ def organize_fight():
     )
     fight_type = int(
         input(
-            "Pick:\n 1. Fight boxing champion Tyson Fury in a 6 round championship fight.\n 2. Fight in a 4 round regular fight against Anthony Joshua\n"
+            "Pick:\n 1. Fight boxing champion Tyson Fury in a 5 round championship fight.\n 2. Fight in a 3 round regular fight against Anthony Joshua\n"
         )
     )
     if fight_type == 1:
         fighter2 = "Tyson Fury"
         fight_type = "Championship"
-        rounds = 6
+        rounds = 5
     elif fight_type == 2:
         fighter2 = "Anthony Joshua"
         fight_type = "Regular"
-        rounds = 4
+        rounds = 3
     else:
         if fight_type not in range(1, 2):
             print("Please chose a 1 or 2")
             organize_fight()
-    boxing_fight(fighter1, fighter2, rounds, "Championship")
-    return
+    winner = boxing_fight(fighter1, fighter2, rounds, "Championship")
+    return winner
 
 
-organize_fight()
+print("\n The winner is " + organize_fight())
