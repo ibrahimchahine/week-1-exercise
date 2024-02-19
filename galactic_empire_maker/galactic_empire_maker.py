@@ -2,15 +2,11 @@ import random
 
 
 class Delegation:
-    def __init__(
-        self,
-        name,
-        materials,
-        suggested,
-    ):
+    def __init__(self, name, materials, suggested):
         self.name = name
         self.materials = materials
         self.suggested = suggested
+        self.peace_achieved = False
 
     def get_suggested(self):
         return self.suggested
