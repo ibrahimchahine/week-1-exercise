@@ -34,14 +34,13 @@ def boxing_round(fighter1, fighter2):
     return
 
 
-def boxing_fight():
-
+def boxing_fight(fighter1, fighter2, rounds, fight_details):
+    fighter1_won_rounds = 0
+    fighter2_won_rounds = 0
+    boxing_round(fighter1, fighter2)
     return
 
 
-def organize_fight():
-
+def organize_fight(fighter1, fighter2):
+    boxing_fight(fighter1, fighter2)
     return
-
-
-boxing_round("", "")
