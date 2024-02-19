@@ -11,7 +11,9 @@ def sieve_of_eratosthenes(number_list):
                 break
             if j == len(prime_numbers) - 1:
                 prime_numbers.append(num)
-                array.pop(i)
+                # https://stackoverflow.com/questions/40851128/removal-of-multiples-of-a-number-on-a-list
+                array = list(filter(lambda x: x % num, array))
+
         length = len(array)
     return prime_numbers
 
