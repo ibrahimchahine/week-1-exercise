@@ -10,14 +10,11 @@ class Decipher:
     def __next__(self):
         if self.current_index >= len(self.cypher):
             raise StopIteration
-
-        # Check if a raise is also required here
-        if self.cypher[self.current_index] in range(len(self.text)):
-            temp = self.cypher[self.current_index]
-            self.current_index += 1
-
-            return self.text[temp - 1][0]
-        return self
+        # # Check if a raise is also required here
+        # if self.cypher[self.current_index] in range(len(self.text)):
+        temp = self.cypher[self.current_index]
+        self.current_index += 1
+        return self.text[temp - 1][0]
 
 
 def start():
