@@ -32,7 +32,7 @@ class System:
                 self.voters.append(voter)
                 candidate = self.get_candatite(candidate_id)
                 self.votes.append(Vote(candidate.position, candidate, voter.id))
-                self.positions["self.positions"] = 0
+                self.positions[position] = 0
                 return True
         return False
 
@@ -51,6 +51,7 @@ class System:
         return False
 
     # def counting_votes(self):
+    #     for position in
 
 
 class Citizen:
@@ -74,8 +75,13 @@ class Vote:
         self.voter_id = voter_id
 
 
-class Result:
-    def __init__(self, candidate, voter_id):
-        self.position = []
-        self.candidate = candidate
-        self.voter_id = voter_id
+class Position:
+    def __init__(self, position):
+        self.candidates = dict()
+        self.position = position
+
+    def add_candidate(self, candadate_id):
+        if candadate_id not in self.candidates:
+            self.candidates[candadate_id] = 0
+            return True
+        return False
