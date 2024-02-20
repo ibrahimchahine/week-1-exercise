@@ -3,7 +3,7 @@ class System:
         self.candidates = []
         self.voters = []
         self.votes = []
-        self.positions = dict()
+        self.positions = []
         self.voting_started = False
 
     def update_voting(self, flag):
@@ -32,7 +32,6 @@ class System:
                 self.voters.append(voter)
                 candidate = self.get_candatite(candidate_id)
                 self.votes.append(Vote(candidate.position, candidate, voter.id))
-                self.positions[position] = 0
                 return True
         return False
 
@@ -46,12 +45,26 @@ class System:
                 return False
             if isinstance(candidate, Candidate):
                 self.candidates.append(candidate)
-                self.positions[candidate.position] += 1
-                return True
+                if self.update_positions(candidate.position, candidate, 0):
+                    return True
+        return False
+
+    def update_positions(self, position_name, candidate, vote):
+        if not self.voting_started:
+            for position_object in self.positions:
+                if isinstance(position_object, Position):
+                    if position_object.position == position_name:
+                        position_object.add_candidate(candidate, vote)
+                        return True
+            temp_position = Position(position_name)
+            temp_position.add_candidate(candidate, vote)
+            self.positions.append(temp_position)
+            return True
+
         return False
 
     # def counting_votes(self):
-    #     for position in
+    # for position in self
 
 
 class Citizen:
@@ -63,7 +76,8 @@ class Citizen:
 
 
 class Candidate(Citizen):
-    def __init__(self, position, candidate_id):
+    def __init__(self, id, name, age, addr, position, candidate_id):
+        Citizen.__init__(self, id, name, age, addr)
         self.candidate_id = candidate_id
         self.position = list(position)
 
@@ -80,8 +94,20 @@ class Position:
         self.candidates = dict()
         self.position = position
 
-    def add_candidate(self, candadate_id):
+    def add_candidate(self, candadate_id, vote):
         if candadate_id not in self.candidates:
-            self.candidates[candadate_id] = 0
+            self.candidates[candadate_id] += vote
             return True
         return False
+
+
+citizen = Citizen(name="ibra", addr="balala", age=24, id=33113)
+candidate = Candidate(
+    name="as",
+    addr="dsadasd",
+    age=60,
+    id=465456,
+    position="position",
+    candidate_id=1213132123,
+)
+print(candidate.name)
