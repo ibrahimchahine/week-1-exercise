@@ -19,7 +19,6 @@ class System:
     def position_exists(self, position_name):
         for position_object in self.positions:
             if isinstance(position_object, Position):
-                print(position_object.position + position_name)
                 if position_object.position == position_name:
                     return True
         return False
@@ -40,8 +39,9 @@ class System:
                 self.voters.append(voter)
                 candidate = self.get_candatite(candidate_id)
                 self.votes.append(Vote(candidate.position, candidate, voter.id))
+                print(position)
                 if self.update_positions(candidate.position, candidate, 1):
-                    return False
+                    return True
         return False
 
     def add_candidate(self, candidate):
@@ -59,21 +59,18 @@ class System:
         return False
 
     def update_positions(self, position_name, candidate, vote):
-        if not self.voting_started:
-            for position_object in self.positions:
-                if isinstance(position_object, Position):
-                    if position_object.position == position_name:
-                        position_object.update_candidate(candidate, vote)
-                        return True
-            temp_position = Position(position_name)
-            temp_position.update_candidate(candidate, vote)
-            self.positions.append(temp_position)
-            return True
+        for position_object in self.positions:
+            if isinstance(position_object, Position):
+                if position_object.position == position_name:
+                    position_object.update_candidate(candidate, vote)
+                    return True
+        temp_position = Position(position_name)
+        temp_position.update_candidate(candidate, vote)
+        self.positions.append(temp_position)
+        return True
 
-        return False
-
-    # def counting_votes(self):
-    # for position in self
+    def counting_votes(self):
+        pass
 
 
 class Citizen:
@@ -107,9 +104,8 @@ class Position:
         if candadate_id not in self.candidates:
             self.candidates[candadate_id] = 0
             return True
-        else:
-            self.candidates[candadate_id] += vote
-        return False
+        self.candidates[candadate_id] += vote
+        return True
 
 
 system = System()
