@@ -94,6 +94,11 @@ class Candidate(Citizen):
     def __str__(self):
         return f"Candatite: {self.name}, Position: {self.position}"
 
+    def __eq__(self, __value: object) -> bool:
+        if isinstance(__value, Candidate):
+            return __value.candidate_id == self.candidate_id
+        return False
+
 
 class Vote:
     def __init__(self, position, candidate, voter_id):
