@@ -39,7 +39,6 @@ class System:
                 self.voters.append(voter)
                 candidate = self.get_candatite(candidate_id)
                 self.votes.append(Vote(candidate.position, candidate, voter.id))
-                print(position)
                 if self.update_positions(candidate.position, candidate, 1):
                     return True
         return False
@@ -63,6 +62,7 @@ class System:
             if isinstance(position_object, Position):
                 if position_object.position == position_name:
                     position_object.update_candidate(candidate, vote)
+                    print(str(position_object))
                     return True
         temp_position = Position(position_name)
         temp_position.update_candidate(candidate, vote)
@@ -87,6 +87,9 @@ class Candidate(Citizen):
         self.candidate_id = candidate_id
         self.position = position
 
+    def __str__(self):
+        return f"Candatite: {self.name}, Position: {self.position}"
+
 
 class Vote:
     def __init__(self, position, candidate, voter_id):
@@ -107,6 +110,9 @@ class Position:
         self.candidates[candadate_id] += vote
         return True
 
+    def __str__(self):
+        return f"{[str(candidate) for candidate in self.candidates]}"
+
 
 system = System()
 citizen = Citizen(name="ibra", addr="balala", age=24, id=33113)
@@ -118,7 +124,7 @@ candidate = Candidate(
     position="position",
     candidate_id=1213132123,
 )
-
+print(str(candidate))
 print(system.add_candidate(candidate=candidate))
 system.update_voting(True)
 print(system.add_vote(candidate_id=1213132123, voter=citizen, position="position"))
