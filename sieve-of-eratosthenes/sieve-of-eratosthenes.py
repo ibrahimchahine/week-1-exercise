@@ -18,3 +18,5 @@ max = int(input("Enter The maximum number (N>3)"))
 array = [i for i in range(4, max)]
 primes = sieve_of_eratosthenes(array)
 print(primes, len(primes))
+
+# found 35 prime numbers
